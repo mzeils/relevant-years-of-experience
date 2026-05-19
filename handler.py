@@ -17,7 +17,9 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 print(f"Loading {MODEL_NAME} on {DEVICE}...", flush=True)
 model = SentenceTransformer(MODEL_NAME, device=DEVICE)
-print(f"Model loaded. Embedding dim: {model.get_sentence_embedding_dimension()}", flush=True)
+_get_dim = getattr(model, "get_embedding_dimension", None) or model.get_sentence_embedding_dimension
+EMBED_DIM = _get_dim()
+print(f"Model loaded. Embedding dim: {EMBED_DIM}", flush=True)
 
 
 def _embed(texts: list[str], normalize: bool = True) -> list[list[float]]:
@@ -58,7 +60,7 @@ def handler(event: dict[str, Any]) -> dict[str, Any]:
         return {
             "task": "embed",
             "model": MODEL_NAME,
-            "dim": model.get_sentence_embedding_dimension(),
+            "dim": EMBED_DIM,
             "count": len(texts),
             "embeddings": _embed(texts, normalize=normalize),
         }
