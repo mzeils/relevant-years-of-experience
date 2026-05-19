@@ -1,0 +1,15 @@
+{
+  "input": {
+    "task": "match",
+    "query": "Senior Software Engineer",
+    "candidates": [
+      "Software Developer",
+      "Lead Backend Engineer",
+      "Registered Nurse",
+      "Frontend Developer",
+      "Disability Support Worker",
+      "Principal Software Engineer"
+    ],
+    "top_k": 3
+  }
+}
