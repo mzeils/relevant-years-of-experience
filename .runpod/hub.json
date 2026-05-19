@@ -1,0 +1,30 @@
+{
+  "title": "JobBERT-v2 Embeddings & Matching",
+  "description": "Serverless endpoint wrapping TechWolf/JobBERT-v2 — a sentence-transformers model fine-tuned for job-title matching. Supports `embed` (return 1024-dim vectors for a list of titles) and `match` (rank candidates against a query by cosine similarity).",
+  "type": "serverless",
+  "category": "language",
+  "iconUrl": "https://huggingface.co/front/assets/huggingface_logo-noborder.svg",
+  "config": {
+    "runsOn": "GPU",
+    "containerDiskInGb": 20,
+    "presets": [
+      {
+        "name": "Default",
+        "defaults": {
+          "MODEL_NAME": "TechWolf/JobBERT-v2"
+        }
+      }
+    ],
+    "env": [
+      {
+        "key": "MODEL_NAME",
+        "input": {
+          "name": "Hugging Face model",
+          "type": "string",
+          "description": "Sentence-Transformers model id to load. Defaults to TechWolf/JobBERT-v2. Note: the default model is baked into the image; switching here will pay a one-time download on cold start.",
+          "default": "TechWolf/JobBERT-v2"
+        }
+      }
+    ]
+  }
+}

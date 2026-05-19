@@ -1,5 +1,7 @@
 # JobBERT-v2 on RunPod Serverless
 
+[![Runpod](https://api.runpod.io/badge/mzeils/relevant-years-of-experience)](https://console.runpod.io/hub/mzeils/relevant-years-of-experience)
+
 Serverless endpoint wrapping [TechWolf/JobBERT-v2](https://huggingface.co/TechWolf/JobBERT-v2) — a sentence-transformers model fine-tuned for job-title matching.
 
 Two tasks:
